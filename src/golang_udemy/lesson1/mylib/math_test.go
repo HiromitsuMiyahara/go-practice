@@ -13,3 +13,4 @@ func TestAverage(t *testing.T) {
 		t.Error("Expected 3, got", v)
 	}
 }
+
