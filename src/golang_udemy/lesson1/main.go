@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/markcheno/go-quote"
-	"github.com/markcheno/go-talib"
+	
 )
 
 func foo() {
@@ -13,7 +11,9 @@ func foo() {
 }
 
 func main() {
-	foo()
-	defer fmt.Println("world")
-	fmt.Println("hello")
+	fmt.Println("run")
+	defer fmt.Println(1)
+	defer fmt.Println(2)
+	defer fmt.Println(3)
+	fmt.Println("success")
 }
