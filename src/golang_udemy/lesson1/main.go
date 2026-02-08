@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	
+	"os"
 )
 
 func foo() {
@@ -11,9 +11,9 @@ func foo() {
 }
 
 func main() {
-	fmt.Println("run")
-	defer fmt.Println(1)
-	defer fmt.Println(2)
-	defer fmt.Println(3)
-	fmt.Println("success")
+	file, _ := os.Open("./main.go")
+	defer file.Close()
+	data := make([]byte, 300)
+	file.Read(data)
+	fmt.Println(string(data))
 }
