@@ -11,11 +11,3 @@ func Average(s []int) int {
 	}
 	return int(total / len(s))
 }
-
-func ExampleAverage() {
-	total := 0
-	for _, i := range s {
-		total += i
-	}
-	return int(total / len(s))
-}

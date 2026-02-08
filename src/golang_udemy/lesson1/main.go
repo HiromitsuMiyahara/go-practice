@@ -7,9 +7,13 @@ import (
 	"github.com/markcheno/go-talib"
 )
 
+func foo() {
+	defer fmt.Println("world foo")
+	fmt.Println("world foo")
+}
+
 func main() {
-	spy, _ := quote.NewQuo  ("spy", "2016-01-01", "2016-01-01", quote.Daily, true)
-	fmt.Print(spy.CSV())
-	rsi2 := talib.Rsi(spy.Close, 2)
-	fmt.Println(rsi2)
+	foo()
+	defer fmt.Println("world")
+	fmt.Println("hello")
 }
