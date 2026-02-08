@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
-func foo() {
-	defer fmt.Println("world foo")
-	fmt.Println("world foo")
+func thirdPartyConnectDB() {
+	panic("Unable to connect database")
+}
+
+func save() {
+	thirdPartyConnectDB()
 }
 
 func main() {
-	file, _ := os.Open("./main.go")
-	defer file.Close()
-	data := make([]byte, 300)
-	file.Read(data)
-	fmt.Println(string(data))
+	save()
+	fmt.Println("OK?")
 }
