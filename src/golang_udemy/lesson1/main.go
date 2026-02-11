@@ -17,34 +17,16 @@ func goroutine1(s []int, c chan int) {
 	for _, v := range s {
 		// time.Sleep(100 * time.Millisecond)
 		sum += v
+		c <- sum
 	}
-	c <- sum
-}
-
-func goroutine2(s []int, c chan int) {
-	sum := 0
-	for _, v := range s {
-		// time.Sleep(100 * time.Millisecond)
-		sum += v
-	}
-	c <- sum
+	close(c)
 }
 
 func main() {
-	ch := make(chan int, 2)
-	ch <- 100
-	fmt.Println(len(ch))
-	ch <- 200
-	fmt.Println(len(ch))
-
-	x := <-ch
-	fmt.Println(x)
-
-	fmt.Println(len(ch))
-
-	ch <- 300
-	fmt.Println(len(ch))
-
-	y := ch
-	fmt.Println(&y)
+	s := []int{1, 2, 3, 4, 5}
+	c := make(chan int)
+	go goroutine1(s, c)
+	for i := range c {
+		fmt.Println(i)
+	}
 }
