@@ -31,12 +31,20 @@ func goroutine2(s []int, c chan int) {
 }
 
 func main() {
-	s := []int{1, 2, 3, 4, 5}
-	c := make(chan int)
-	go goroutine1(s, c)
-	go goroutine2(s, c)
-	x := <-c
+	ch := make(chan int, 2)
+	ch <- 100
+	fmt.Println(len(ch))
+	ch <- 200
+	fmt.Println(len(ch))
+
+	x := <-ch
 	fmt.Println(x)
-	y := <-c
-	fmt.Println(y)
+
+	fmt.Println(len(ch))
+
+	ch <- 300
+	fmt.Println(len(ch))
+
+	y := ch
+	fmt.Println(&y)
 }
