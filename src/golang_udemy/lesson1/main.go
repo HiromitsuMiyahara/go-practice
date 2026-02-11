@@ -14,8 +14,10 @@ func producer(ch chan int, i int) {
 
 func consumer(ch chan int, wg *sync.WaitGroup) {
 	for i := range ch {
-		fmt.Println("provess", i * 1000)
-		wg.Done()
+		func() {
+			fmt.Println("provess", i * 1000)
+			wg.Done()
+		}()
 	}
 	fmt.Println("####")
 }
