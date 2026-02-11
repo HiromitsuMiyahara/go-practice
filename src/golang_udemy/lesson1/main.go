@@ -14,11 +14,11 @@ func normal(s string) {
 }
 
 func goroutine(s string, wg *sync.WaitGroup) {
+	defer wg.Done()
 	for i := 0; i < 5; i++ {
 		// time.Sleep(100 * time.Millisecond)
 		fmt.Println(s)
 	}
-	wg.Done()
 }
 
 func main() {
