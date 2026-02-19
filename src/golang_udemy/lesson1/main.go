@@ -26,6 +26,13 @@ func goroutine3(ch chan string) {
 		}
 }
 
+func goroutine4(ch chan string) {
+	for {
+		ch <- "packet from 2"
+		time.Sleep(1 * time.Second)
+		}
+}
+
 func main() {
 	c1 := make(chan string)
 	c2 := make(chan string)
